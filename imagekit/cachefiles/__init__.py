@@ -42,9 +42,14 @@ class ImageCacheFile(BaseIKFile, ImageFile):
                 name = fn(generator)
         self.name = name
 
-        storage = (callable(storage) and storage()) or storage or \
-            getattr(generator, 'cachefile_storage', None) or get_singleton(
-            settings.IMAGEKIT_DEFAULT_FILE_STORAGE, 'file storage backend')
+        if not storage:
+            storage = getattr(generator, 'cachefile_storage', None)
+        if storage and callable(storage):
+            storage = storage()
+
+        else:
+            storage = get_singleton(settings.IMAGEKIT_DEFAULT_FILE_STORAGE, 'file storage backend')
+        
         self.cachefile_backend = (
             cachefile_backend
             or getattr(generator, 'cachefile_backend', None)
