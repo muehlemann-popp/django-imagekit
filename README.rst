@@ -3,6 +3,8 @@
 .. |Build Status| image:: https://github.com/matthewwithanm/django-imagekit/actions/workflows/python.yml/badge.svg?branch=develop
 .. _Build Status: https://github.com/matthewwithanm/django-imagekit/actions/workflows/python.yml
 
+Fork from http://django-imagekit.readthedocs.org
+
 ImageKit is a Django app for processing images. Need a thumbnail? A
 black-and-white version of a user-uploaded image? ImageKit will make them for
 you. If you need to programmatically generate one image from another, you need
